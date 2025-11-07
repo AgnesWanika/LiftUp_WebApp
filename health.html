@@ -5,6 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LiftUp - Health Section</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #e3f9e5, #fffefc);
+            font-family: "Poppins", sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 1.2em;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 12px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            text-align: center;
+            padding: 30px;
+        }
+
+        h2 {
+            color: #3a7a3a;
+        }
+
+        .content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content li {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        .video img {
+            transition: transform 0.3s ease;
+        }
+
+        .video img:hover {
+            transform: scale(1.05);
+        }
+
+        /* 💧 Stylish Quiz Section */
+        .quiz {
+            margin: 40px auto;
+            background: #ffffffb9;
+            border-radius: 16px;
+            padding: 25px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease;
+        }
+
+        .quiz h3 {
+            color: #2f7b4e;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .quiz select {
+            width: 70%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #aaa;
+            outline: none;
+            font-size: 1em;
+            background: #f8fdf8;
+            margin-top: 10px;
+        }
+
+        .quiz button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: linear-gradient(to right, #4CAF50, #2e7d32);
+            color: white;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.4s;
+        }
+
+        .quiz button:hover {
+            background: linear-gradient(to right, #66bb6a, #43a047);
+            transform: translateY(-2px);
+        }
+
+        #quizResult {
+            margin-top: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #444;
+            transition: color 0.5s, transform 0.5s;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -55,18 +179,15 @@
             <p>Answer a quick question to reflect on your daily habits!</p>
 
             <label for="water">How many glasses of water did you drink today?</label><br>
-            <select id="water" style="margin-top:5px; padding:5px; border-radius:6px;">
+            <select id="water">
                 <option value="0-2">0–2</option>
                 <option value="3-5">3–5</option>
                 <option value="6-8">6–8</option>
                 <option value="8+">8+</option>
             </select><br><br>
 
-            <button onclick="checkHealth()" style="padding:10px 15px; background-color:#4CAF50; color:white; border:none; border-radius:8px; cursor:pointer;">
-                ✅ Check My Health
-            </button>
-
-            <p id="quizResult" style="margin-top:10px; font-weight:bold;"></p>
+            <button onclick="checkHealth()">✅ Check My Health</button>
+            <p id="quizResult"></p>
         </section>
     </main>
 
@@ -80,15 +201,20 @@
             const result = document.getElementById("quizResult");
 
             if (water === "8+") {
-                result.textContent = "🌟 Great job! You're keeping yourself well hydrated!";
-                result.style.color = "green";
+                result.textContent = "🌟 Excellent! You're fully hydrated and glowing with energy!";
+                result.style.color = "#2e7d32";
+                result.style.transform = "scale(1.1)";
             } else if (water === "6-8") {
-                result.textContent = "💧 Good work! Keep it up for a healthier you!";
-                result.style.color = "blue";
+                result.textContent = "💧 Great job! You're keeping your body healthy and active!";
+                result.style.color = "#1976d2";
+                result.style.transform = "scale(1.05)";
             } else {
                 result.textContent = "🚰 Try to drink more water tomorrow — your body will thank you!";
-                result.style.color = "orange";
+                result.style.color = "#f57c00";
+                result.style.transform = "scale(1.05)";
             }
+
+            setTimeout(() => result.style.transform = "scale(1)", 800);
         }
     </script>
 </body>
