@@ -1,83 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiftUp - Donate Section</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LiftUp - Donate</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      color: #333;
+      background: linear-gradient(135deg, #fffefc, #e8f5e9);
+    }
+
+    header {
+      background-color: #81c784;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 1.3em;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      text-align: center;
+      padding: 30px;
+    }
+
+    h2 {
+      color: #2e7d32;
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      padding: 25px;
+      max-width: 500px;
+      margin: 0 auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin: 10px 0 5px 10px;
+      font-weight: 500;
+    }
+
+    input, select, button, textarea {
+      width: 90%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+      outline: none;
+      margin-bottom: 15px;
+      font-family: "Poppins", sans-serif;
+    }
+
+    button {
+      background: linear-gradient(to right, #4caf50, #2e7d32);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      width: 95%;
+      padding: 12px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #66bb6a, #388e3c);
+      transform: translateY(-2px);
+    }
+
+    #message {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #2e7d32;
+    }
+
+    footer {
+      background-color: #81c784;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9em;
+    }
+
+    .highlight {
+      background-color: #e8f5e9;
+      border-left: 5px solid #43a047;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 10px;
+      text-align: left;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .highlight h3 {
+      color: #2e7d32;
+    }
+
+  </style>
 </head>
 <body>
-    <header>
-        <h1>💰 LiftUp: Donate & Make a Difference</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="health.html">Health</a>
-            <a href="education.html">Education</a>
-            <a href="reflect.html">Reflect</a>
-        </nav>
-    </header>
+  <header>
+    <h1>💚 LiftUp: Donate for a Better Tomorrow</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="health.html">Health</a>
+      <a href="education.html">Education</a>
+      <a href="reflect.html">Reflect</a>
+    </nav>
+  </header>
 
-    <main>
-        <section class="intro">
-            <h2>“No one has ever become poor by giving.” – Anne Frank 🌿</h2>
-            <p>
-                Your support helps us bring better resources to the community.  
-                Choose a cause and contribute generously to make an impact.
-            </p>
-        </section>
+  <main>
+    <section class="intro">
+      <h2>Every Contribution Counts 🌍</h2>
+      <p>
+        Your donation helps empower others through education, health awareness, reflection, and support.  
+        Even a small act of kindness can create a ripple of change 🌊.
+      </p>
+    </section>
 
-        <section class="form-section">
-            <h3>📝 Donation Form</h3>
-            <form id="donationForm">
-                <label for="name">Full Name:</label><br>
-                <input type="text" id="name" placeholder="Enter your name" required><br><br>
+    <!-- Donation Form -->
+    <form id="donationForm">
+      <label for="name">👤 Your Name:</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
 
-                <label for="contact">Contact Number:</label><br>
-                <input type="tel" id="contact" placeholder="Enter your number" required><br><br>
+      <label for="contact">📞 Contact Number:</label>
+      <input type="tel" id="contact" placeholder="Enter your phone number" required>
 
-                <label for="section">Choose a Section to Support:</label><br>
-                <select id="section" required>
-                    <option value="">--Select--</option>
-                    <option value="Health">Health</option>
-                    <option value="Education">Education</option>
-                    <option value="Reflect">Reflect</option>
-                </select><br><br>
+      <label for="amount">💰 Donation Amount (₹):</label>
+      <input type="number" id="amount" placeholder="Enter amount" required>
 
-                <label for="amount">Donation Amount (₹):</label><br>
-                <input type="number" id="amount" placeholder="Enter amount" min="10" required><br><br>
+      <label for="section">🎯 Choose Section to Support:</label>
+      <select id="section" required>
+        <option value="">-- Select Section --</option>
+        <option value="Health">Health</option>
+        <option value="Education">Education</option>
+        <option value="Reflect">Reflect</option>
+        <option value="Community">Community</option>
+      </select>
 
-                <button type="submit" class="btn">Submit Donation</button>
-            </form>
+      <label for="messageBox">💌 Message (optional):</label>
+      <textarea id="messageBox" rows="4" placeholder="Share your thoughts..."></textarea>
 
-            <div id="summary" class="summary"></div>
-        </section>
-    </main>
+      <button type="button" onclick="submitDonation()">❤️ Donate Now</button>
+      <p id="message"></p>
+    </form>
 
-    <footer>
-        <p>© 2025 LiftUp Community | Donate Section</p>
-    </footer>
+    <!-- Highlight Section -->
+    <div class="highlight" id="donationDetails" style="display:none;">
+      <h3>🌸 Thank You for Your Kindness!</h3>
+      <p id="donorInfo"></p>
+      <p>We’re grateful for your contribution to <b><span id="donationArea"></span></b>.</p>
+    </div>
+  </main>
 
-    <script>
-        // Donation form logic
-        document.getElementById("donationForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent page reload
+  <footer>
+    <p>© 2025 LiftUp Community | Donate Section</p>
+  </footer>
 
-            const name = document.getElementById("name").value;
-            const contact = document.getElementById("contact").value;
-            const section = document.getElementById("section").value;
-            const amount = document.getElementById("amount").value;
+  <script>
+    function submitDonation() {
+      const name = document.getElementById("name").value.trim();
+      const contact = document.getElementById("contact").value.trim();
+      const amount = document.getElementById("amount").value.trim();
+      const section = document.getElementById("section").value;
+      const message = document.getElementById("messageBox").value.trim();
 
-            if (name && contact && section && amount) {
-                document.getElementById("summary").innerHTML = `
-                    <h3>🎉 Thank You, ${name}!</h3>
-                    <p>Your contribution of <b>₹${amount}</b> towards the <b>${section}</b> section is greatly appreciated.</p>
-                    <p>We’ll contact you soon at <b>${contact}</b> for confirmation.</p>
-                `;
-                document.getElementById("donationForm").reset();
-            } else {
-                document.getElementById("summary").innerHTML = `<p style="color:red;">Please fill out all fields.</p>`;
-            }
-        });
-    </script>
+      if (!name || !contact || !amount || !section) {
+        document.getElementById("message").textContent = "⚠️ Please fill in all required fields.";
+        document.getElementById("message").style.color = "red";
+        return;
+      }
+
+      // Save donation locally
+      const donation = {
+        name,
+        contact,
+        amount,
+        section,
+        message,
+        date: new Date().toLocaleString()
+      };
+
+      localStorage.setItem("lastDonation", JSON.stringify(donation));
+
+      // Show success message
+      document.getElementById("message").textContent = "✅ Thank you for your generous donation!";
+      document.getElementById("message").style.color = "green";
+
+      // Display donation details
+      document.getElementById("donationDetails").style.display = "block";
+      document.getElementById("donorInfo").innerHTML =
+        `💖 <b>${donation.name}</b> donated ₹${donation.amount} on ${donation.date}.<br>
+         Contact: ${donation.contact}<br>
+         ${donation.message ? `Message: "${donation.message}"` : ""}`;
+      document.getElementById("donationArea").textContent = donation.section;
+
+      // Reset form
+      document.getElementById("donationForm").reset();
+    }
+
+    // Load last donation on page load
+    window.onload = function() {
+      const lastDonation = localStorage.getItem("lastDonation");
+      if (lastDonation) {
+        const d = JSON.parse(lastDonation);
+        document.getElementById("donationDetails").style.display = "block";
+        document.getElementById("donorInfo").innerHTML =
+          `💖 <b>${d.name}</b> donated ₹${d.amount} on ${d.date}.<br>
+           Contact: ${d.contact}<br>
+           ${d.message ? `Message: "${d.message}"` : ""}`;
+        document.getElementById("donationArea").textContent = d.section;
+      }
+    };
+  </script>
 </body>
 </html>
