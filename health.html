@@ -91,7 +91,7 @@
         }
 
         .quiz button {
-            margin-top: 15px;
+            margin-top: 20px;
             padding: 12px 20px;
             background: linear-gradient(to right, #4CAF50, #2e7d32);
             color: white;
@@ -121,7 +121,6 @@
             text-align: center;
             padding: 10px;
             font-size: 0.9em;
-            position: relative;
         }
 
         @keyframes fadeIn {
@@ -173,12 +172,12 @@
             </p>
         </section>
 
-        <!-- 🩺 Health Quiz Section -->
+        <!-- 🩺 Enhanced Health Quiz Section -->
         <section class="quiz">
             <h3>🩺 Quick Health Check</h3>
-            <p>Answer a quick question to reflect on your daily habits!</p>
+            <p>Answer a couple of quick questions to reflect on your healthy habits today!</p>
 
-            <label for="water">How many glasses of water did you drink today?</label><br>
+            <label for="water">💧 How many glasses of water did you drink today?</label><br>
             <select id="water">
                 <option value="0-2">0–2</option>
                 <option value="3-5">3–5</option>
@@ -186,7 +185,16 @@
                 <option value="8+">8+</option>
             </select><br><br>
 
-            <button onclick="checkHealth()">✅ Check My Health</button>
+            <label for="steps">🚶 How many steps did you walk today?</label><br>
+            <select id="steps">
+                <option value="0-2000">0–2,000</option>
+                <option value="2000-5000">2,000–5,000</option>
+                <option value="5000-10000">5,000–10,000</option>
+                <option value="10000+">10,000+</option>
+            </select><br><br>
+
+            <button onclick="calculateWellness()">✅ Check My Wellness</button>
+
             <p id="quizResult"></p>
         </section>
     </main>
@@ -196,24 +204,39 @@
     </footer>
 
     <script>
-        function checkHealth() {
+        function calculateWellness() {
             const water = document.getElementById("water").value;
+            const steps = document.getElementById("steps").value;
             const result = document.getElementById("quizResult");
 
-            if (water === "8+") {
-                result.textContent = "🌟 Excellent! You're fully hydrated and glowing with energy!";
+            let score = 0;
+
+            // Water score
+            if (water === "8+") score += 50;
+            else if (water === "6-8") score += 40;
+            else if (water === "3-5") score += 25;
+            else score += 10;
+
+            // Steps score
+            if (steps === "10000+") score += 50;
+            else if (steps === "5000-10000") score += 40;
+            else if (steps === "2000-5000") score += 25;
+            else score += 10;
+
+            let message = "";
+            if (score >= 80) {
+                message = `🌟 Excellent! Wellness Score: ${score}/100 — You're doing amazing! Keep it up!`;
                 result.style.color = "#2e7d32";
-                result.style.transform = "scale(1.1)";
-            } else if (water === "6-8") {
-                result.textContent = "💧 Great job! You're keeping your body healthy and active!";
+            } else if (score >= 50) {
+                message = `💧 Good effort! Wellness Score: ${score}/100 — Small improvements will make a big difference.`;
                 result.style.color = "#1976d2";
-                result.style.transform = "scale(1.05)";
             } else {
-                result.textContent = "🚰 Try to drink more water tomorrow — your body will thank you!";
+                message = `🚶 Wellness Score: ${score}/100 — Start small! A few healthy changes will go a long way.`;
                 result.style.color = "#f57c00";
-                result.style.transform = "scale(1.05)";
             }
 
+            result.textContent = message;
+            result.style.transform = "scale(1.1)";
             setTimeout(() => result.style.transform = "scale(1)", 800);
         }
     </script>
