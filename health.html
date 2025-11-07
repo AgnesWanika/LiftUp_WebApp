@@ -37,30 +37,36 @@
         </section>
 
         <section class="video">
-          <h3>🎥 Watch: 5-Minute Morning Routine</h3>
-            <!-- Thumbnail image that links to YouTube -->
+            <h3>🎥 Watch: 5-Minute Morning Routine</h3>
             <a href="https://www.youtube.com/watch?v=sTANio_2E0Q" target="_blank">
-            <img 
-                src="https://img.youtube.com/vi/sTANio_2E0Q/0.jpg" 
-                alt="5-Minute Morning Routine Thumbnail"
-                style="width:560px; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.3); cursor:pointer;">
+                <img 
+                    src="https://img.youtube.com/vi/sTANio_2E0Q/0.jpg" 
+                    alt="5-Minute Morning Routine Thumbnail"
+                    style="width:560px; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.3); cursor:pointer;">
             </a>
             <p style="font-size:14px; color:#555;">
                 Click the image to watch the video on YouTube.
             </p>
         </section>
 
-        <section class="download">
-            <h3>📘 Download Health Guide</h3>
+        <!-- 🩺 Health Quiz Section -->
+        <section class="quiz">
+            <h3>🩺 Quick Health Check</h3>
+            <p>Answer a quick question to reflect on your daily habits!</p>
 
-<p>Click below to download our free "Healthy Living" PDF guide.</p>
+            <label for="water">How many glasses of water did you drink today?</label><br>
+            <select id="water" style="margin-top:5px; padding:5px; border-radius:6px;">
+                <option value="0-2">0–2</option>
+                <option value="3-5">3–5</option>
+                <option value="6-8">6–8</option>
+                <option value="8+">8+</option>
+            </select><br><br>
 
-<a href="assets/health_guide.pdf" download="Health_Guide_LiftUp.pdf">
-  <button style="padding:10px 15px; background-color:#4CAF50; color:white; border:none; border-radius:8px; cursor:pointer;">
-    ⬇️ Download PDF
-  </button>
-</a>
+            <button onclick="checkHealth()" style="padding:10px 15px; background-color:#4CAF50; color:white; border:none; border-radius:8px; cursor:pointer;">
+                ✅ Check My Health
+            </button>
 
+            <p id="quizResult" style="margin-top:10px; font-weight:bold;"></p>
         </section>
     </main>
 
@@ -68,6 +74,22 @@
         <p>© 2025 LiftUp Community | Health Section</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        function checkHealth() {
+            const water = document.getElementById("water").value;
+            const result = document.getElementById("quizResult");
+
+            if (water === "8+") {
+                result.textContent = "🌟 Great job! You're keeping yourself well hydrated!";
+                result.style.color = "green";
+            } else if (water === "6-8") {
+                result.textContent = "💧 Good work! Keep it up for a healthier you!";
+                result.style.color = "blue";
+            } else {
+                result.textContent = "🚰 Try to drink more water tomorrow — your body will thank you!";
+                result.style.color = "orange";
+            }
+        }
+    </script>
 </body>
 </html>
