@@ -50,7 +50,7 @@
     }
 
     section {
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       border-radius: 16px;
       padding: 25px;
       margin: 20px auto;
@@ -98,17 +98,20 @@
       color: #2e7d32;
     }
 
-    #moodMsg {
+    #moodMsg, #msg {
       font-weight: bold;
       margin-top: 10px;
-      color: #4caf50;
     }
 
-    #msg {
-      font-weight: bold;
-      margin-top: 8px;
+    #savedReflection {
+      margin-top: 15px;
+      font-style: italic;
+      background: #f0f7f0;
+      border-left: 5px solid #4caf50;
+      padding: 10px;
+      border-radius: 8px;
+      display: none;
     }
-
   </style>
 </head>
 <body>
@@ -149,6 +152,7 @@
       <textarea id="reflection" placeholder="Write your thoughts here..." rows="6" cols="50"></textarea><br><br>
       <button onclick="saveReflection()">💾 Save Reflection</button>
       <p id="msg"></p>
+      <div id="savedReflection"></div>
     </section>
 
     <!-- Ambient Sound -->
@@ -195,26 +199,43 @@
         msg.textContent = "Gratitude turns what we have into enough 🌻.";
     }
 
-    // 🪞 Reflection Save Confirmation
+    // 🪞 Reflection Save + Display
     function saveReflection() {
-      const text = document.getElementById("reflection").value;
+      const text = document.getElementById("reflection").value.trim();
       const msg = document.getElementById("msg");
-      if (text.trim() === "") {
+      const saved = document.getElementById("savedReflection");
+
+      if (text === "") {
         msg.textContent = "Please write something to save.";
         msg.style.color = "red";
       } else {
+        localStorage.setItem("userReflection", text);
         msg.textContent = "Reflection saved successfully 🌸";
         msg.style.color = "green";
         document.getElementById("reflection").value = "";
+
+        saved.textContent = "🪞 Your Last Reflection: " + text;
+        saved.style.display = "block";
       }
     }
 
-    // 🎧 Sound Player
+    // 🪞 Load saved reflection on page load
+    window.onload = function() {
+      const lastReflection = localStorage.getItem("userReflection");
+      const saved = document.getElementById("savedReflection");
+      if (lastReflection) {
+        saved.textContent = "🪞 Your Last Reflection: " + lastReflection;
+        saved.style.display = "block";
+      }
+    };
+
+    // 🎧 Sound Player (works reliably)
     function playSound() {
       const sound = document.getElementById("soundSelect").value;
       const player = document.getElementById("player");
-      player.src = "assets/" + sound;
-      player.play();
+      player.src = "./assets/" + sound; // make sure path matches your project
+      player.load();
+      player.play().catch(err => console.log("Autoplay blocked:", err));
     }
   </script>
 </body>
