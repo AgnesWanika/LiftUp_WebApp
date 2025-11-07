@@ -1,82 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiftUp - Reflect Section</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LiftUp - Reflect Section</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      color: #333;
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      animation: bgfade 8s ease-in-out infinite alternate;
+      background-attachment: fixed;
+    }
+
+    @keyframes bgfade {
+      0% { background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); }
+      100% { background: linear-gradient(135deg, #e3f9e5 0%, #fef6f9 100%); }
+    }
+
+    header {
+      background-color: #81c784;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 1.3em;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      text-align: center;
+      padding: 30px;
+    }
+
+    h2 {
+      color: #2e7d32;
+    }
+
+    section {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 16px;
+      padding: 25px;
+      margin: 20px auto;
+      max-width: 600px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    select, textarea, button {
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      font-size: 1em;
+      outline: none;
+    }
+
+    button {
+      background: linear-gradient(to right, #4caf50, #2e7d32);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #66bb6a, #388e3c);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      background-color: #81c784;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9em;
+    }
+
+    audio {
+      width: 80%;
+      margin-top: 10px;
+    }
+
+    #affirmation {
+      font-style: italic;
+      font-weight: 500;
+      color: #2e7d32;
+    }
+
+    #moodMsg {
+      font-weight: bold;
+      margin-top: 10px;
+      color: #4caf50;
+    }
+
+    #msg {
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+  </style>
 </head>
 <body>
-    <header>
-        <h1>🌅 LiftUp: Reflect & Reconnect</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="health.html">Health</a>
-            <a href="education.html">Education</a>
-            <a href="donate.html">Donate</a>
-        </nav>
-    </header>
+  <header>
+    <h1>🌸 LiftUp: Reflect & Reconnect</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="health.html">Health</a>
+      <a href="education.html">Education</a>
+      <a href="donate.html">Donate</a>
+    </nav>
+  </header>
 
-    <main>
-        <section class="intro">
-            <h2>Pause. Breathe. Reflect. 🌸</h2>
-            <p>
-                This space is for you to slow down and think about your day.  
-                Reflect on what made you smile and what you’re grateful for.
-            </p>
-        </section>
+  <main>
+    <!-- Daily Affirmation -->
+    <section>
+      <h3>🌻 Affirmation of the Day</h3>
+      <p id="affirmation"></p>
+    </section>
 
-        <section class="quotes">
-            <h3>💬 Daily Reflection Quotes</h3>
-            <blockquote>“The quieter you become, the more you can hear.” – Ram Dass</blockquote>
-            <blockquote>“Peace comes from within. Do not seek it without.” – Buddha</blockquote>
-            <blockquote>“Your life is as good as your mindset.”</blockquote>
-        </section>
+    <!-- Mood Selector -->
+    <section>
+      <h3>💖 How are you feeling today?</h3>
+      <select id="moodSelect">
+        <option value="happy">😊 Happy</option>
+        <option value="stressed">😞 Stressed</option>
+        <option value="tired">😴 Tired</option>
+        <option value="grateful">🙏 Grateful</option>
+      </select>
+      <br><br>
+      <button onclick="showMood()">🌈 Reflect</button>
+      <p id="moodMsg"></p>
+    </section>
 
-        <section class="reflect-box">
-            <h3>🪞 Write Your Reflection</h3>
-            <textarea id="reflection" placeholder="Write your thoughts here..." rows="6" cols="50"></textarea><br>
-            <button id="saveBtn" class="btn">Save Reflection</button>
-            <p id="msg"></p>
-        </section>
+    <!-- Reflection Writing -->
+    <section>
+      <h3>🪞 Write Your Reflection</h3>
+      <textarea id="reflection" placeholder="Write your thoughts here..." rows="6" cols="50"></textarea><br><br>
+      <button onclick="saveReflection()">💾 Save Reflection</button>
+      <p id="msg"></p>
+    </section>
 
-        <section class="audio">
-            <h3>🎧 Relaxing Music</h3>
-            <audio controls>
-                <source src="assets/relax_music.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </section>
-    </main>
+    <!-- Ambient Sound -->
+    <section>
+      <h3>🎧 Choose Ambient Sound</h3>
+      <select id="soundSelect">
+        <option value="rain.mp3">🌧 Rain</option>
+        <option value="ocean.mp3">🌊 Ocean Waves</option>
+        <option value="forest.mp3">🌲 Forest Birds</option>
+      </select><br><br>
+      <audio id="player" controls></audio><br>
+      <button onclick="playSound()">Play Sound</button>
+    </section>
+  </main>
 
-    <footer>
-        <p>© 2025 LiftUp Community | Reflect Section</p>
-    </footer>
+  <footer>
+    <p>© 2025 LiftUp Community | Reflect Section</p>
+  </footer>
 
-    <script>
-        // Simple save confirmation
-        document.getElementById("saveBtn").addEventListener("click", function() {
-            const text = document.getElementById("reflection").value;
-            if (text.trim() === "") {
-                document.getElementById("msg").textContent = "Please write something to save.";
-                document.getElementById("msg").style.color = "red";
-            } else {
-                document.getElementById("msg").textContent = "Reflection saved successfully 🌸";
-                document.getElementById("msg").style.color = "green";
-                document.getElementById("reflection").value = "";
-            }
-        });
-<configuration>
-  <system.webServer>
-    <staticContent>
-      <mimeMap fileExtension=".mp3" mimeType="audio/mpeg" />
-    </staticContent>
-  </system.webServer>
-</configuration>
+  <script>
+    // 🌻 Affirmation of the Day
+    const affirmations = [
+      "You are enough, just as you are.",
+      "Every breath is a fresh start.",
+      "Peace begins within you.",
+      "You are growing, even if it’s slow.",
+      "You deserve to rest, to heal, and to bloom.",
+      "Let go of what you can't control, breathe, and begin again."
+    ];
+    document.getElementById("affirmation").textContent =
+      affirmations[Math.floor(Math.random() * affirmations.length)];
 
-    </script>
+    // 💖 Mood Selector
+    function showMood() {
+      const mood = document.getElementById("moodSelect").value;
+      const msg = document.getElementById("moodMsg");
+      if (mood === "happy")
+        msg.textContent = "Keep shining 🌟! Happiness is contagious — spread it today.";
+      else if (mood === "stressed")
+        msg.textContent = "Take a deep breath 🌿. You’re doing your best, and that’s enough.";
+      else if (mood === "tired")
+        msg.textContent = "Rest is productive too 💫. Refill your energy and try again tomorrow.";
+      else
+        msg.textContent = "Gratitude turns what we have into enough 🌻.";
+    }
+
+    // 🪞 Reflection Save Confirmation
+    function saveReflection() {
+      const text = document.getElementById("reflection").value;
+      const msg = document.getElementById("msg");
+      if (text.trim() === "") {
+        msg.textContent = "Please write something to save.";
+        msg.style.color = "red";
+      } else {
+        msg.textContent = "Reflection saved successfully 🌸";
+        msg.style.color = "green";
+        document.getElementById("reflection").value = "";
+      }
+    }
+
+    // 🎧 Sound Player
+    function playSound() {
+      const sound = document.getElementById("soundSelect").value;
+      const player = document.getElementById("player");
+      player.src = "assets/" + sound;
+      player.play();
+    }
+  </script>
 </body>
 </html>
-
-
-
