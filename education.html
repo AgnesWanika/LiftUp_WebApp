@@ -5,10 +5,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LiftUp - Education Section</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #fffefc, #eaf3ff);
+            font-family: "Poppins", sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #3f51b5;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 1.2em;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 12px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            text-align: center;
+            padding: 30px;
+        }
+
+        h2 {
+            color: #283593;
+        }
+
+        .content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content li {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        /* 🎥 Video Section */
+        .video img {
+            border-radius: 12px;
+            width: 560px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .video img:hover {
+            transform: scale(1.05);
+        }
+
+        .quiz {
+            margin: 40px auto;
+            background: #ffffffd8;
+            border-radius: 16px;
+            padding: 25px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease;
+        }
+
+        .quiz h3 {
+            color: #3f51b5;
+        }
+
+        .quiz select {
+            width: 70%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #aaa;
+            outline: none;
+            font-size: 1em;
+            background: #f8fdf8;
+            margin-top: 10px;
+        }
+
+        .quiz button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: linear-gradient(to right, #3f51b5, #1a237e);
+            color: white;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.4s;
+        }
+
+        .quiz button:hover {
+            background: linear-gradient(to right, #5c6bc0, #3949ab);
+            transform: translateY(-2px);
+        }
+
+        #quizResult {
+            margin-top: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: color 0.5s, transform 0.5s;
+        }
+
+        footer {
+            background-color: #3f51b5;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>📘 LiftUp: Education for All</h1>
+        <h1>📘 LiftUp: Education & Growth</h1>
         <nav>
             <a href="index.html">Home</a>
             <a href="health.html">Health</a>
@@ -19,37 +143,60 @@
 
     <main>
         <section class="intro">
-            <h2>Empower Yourself Through Learning 🎓</h2>
+            <h2>Empower Your Mind 💡</h2>
             <p>
-                Knowledge is the foundation of growth. Explore our curated resources to expand your skills and understanding.
+                Access study materials, motivational resources, and learning tools that help you stay focused and inspired.
             </p>
         </section>
 
         <section class="content">
-            <h3>📚 Recommended Learning Resources</h3>
+            <h3>📚 Smart Study Tips</h3>
             <ul>
-                <li><a href="https://www.khanacademy.org" target="_blank">Khan Academy - Free Learning Platform</a></li>
-                <li><a href="https://www.coursera.org" target="_blank">Coursera - Global Online Courses</a></li>
-                <li><a href="https://www.edx.org" target="_blank">edX - Learn from Top Universities</a></li>
-                <li><a href="https://nptel.ac.in" target="_blank">NPTEL - Indian Technical Courses</a></li>
-                <li><a href="https://www.openlibrary.org" target="_blank">Open Library - Free Books for Everyone</a></li>
+                <li>📖 Plan short study sessions with breaks for better focus.</li>
+                <li>🧠 Revise key concepts regularly for long-term memory.</li>
+                <li>🎯 Set realistic goals and reward yourself after completing them.</li>
+                <li>💤 Get enough rest before exams — your brain needs it!</li>
+                <li>🤝 Collaborate with peers for active learning.</li>
             </ul>
         </section>
 
+        <!-- 🎥 Video Section -->
         <section class="video">
-            <h3>🎥 Watch: Learning Never Stops</h3>
-            <iframe width="560" height="315"
-                src="https://www.youtube.com/embed/H14bBuluwB8"
-                title="YouTube video player"
-                frameborder="0"
-                allowfullscreen>
-            </iframe>
+            <h3>🎥 Watch: Study Motivation & Focus Tips</h3>
+            <a href="https://www.youtube.com/watch?v=ZXsQAXx_ao0" target="_blank">
+                <img 
+                    src="https://img.youtube.com/vi/ZXsQAXx_ao0/0.jpg" 
+                    alt="Study Motivation Video">
+            </a>
+            <p style="font-size:14px; color:#555;">
+                Click the image to watch motivation tips on YouTube.
+            </p>
         </section>
 
-        <section class="download">
-            <h3>📄 Download Study Guides</h3>
-            <p>Access free educational materials to enhance your learning journey.</p>
-            <a href="assets/study_material.pdf" class="btn" download>Download Study Guide</a>
+        <!-- 🎓 Education Quiz Section -->
+        <section class="quiz">
+            <h3>🎯 Focus Quiz</h3>
+            <p>Let’s check how focused and prepared you feel today!</p>
+
+            <label for="studyHours">⏰ How many hours did you study today?</label><br>
+            <select id="studyHours">
+                <option value="0-1">0–1</option>
+                <option value="2-3">2–3</option>
+                <option value="4-5">4–5</option>
+                <option value="6+">6+</option>
+            </select><br><br>
+
+            <label for="distraction">📱 How often did you get distracted?</label><br>
+            <select id="distraction">
+                <option value="often">Very often</option>
+                <option value="sometimes">Sometimes</option>
+                <option value="rarely">Rarely</option>
+                <option value="never">Never</option>
+            </select><br><br>
+
+            <button onclick="checkFocus()">✅ Check My Focus</button>
+
+            <p id="quizResult"></p>
         </section>
     </main>
 
@@ -57,6 +204,42 @@
         <p>© 2025 LiftUp Community | Education Section</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        function checkFocus() {
+            const hours = document.getElementById("studyHours").value;
+            const distraction = document.getElementById("distraction").value;
+            const result = document.getElementById("quizResult");
+
+            let score = 0;
+
+            // Study hours scoring
+            if (hours === "6+") score += 50;
+            else if (hours === "4-5") score += 40;
+            else if (hours === "2-3") score += 25;
+            else score += 10;
+
+            // Distraction scoring
+            if (distraction === "never") score += 50;
+            else if (distraction === "rarely") score += 40;
+            else if (distraction === "sometimes") score += 25;
+            else score += 10;
+
+            let message = "";
+            if (score >= 80) {
+                message = `🌟 Focus Level: ${score}/100 — Excellent! You’re super productive and focused!`;
+                result.style.color = "#2e7d32";
+            } else if (score >= 50) {
+                message = `📘 Focus Level: ${score}/100 — Good job! A bit more focus will take you higher!`;
+                result.style.color = "#1976d2";
+            } else {
+                message = `📱 Focus Level: ${score}/100 — Try reducing distractions and setting small goals.`;
+                result.style.color = "#f57c00";
+            }
+
+            result.textContent = message;
+            result.style.transform = "scale(1.1)";
+            setTimeout(() => result.style.transform = "scale(1)", 800);
+        }
+    </script>
 </body>
 </html>
