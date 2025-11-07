@@ -87,11 +87,6 @@
       font-size: 0.9em;
     }
 
-    audio {
-      width: 80%;
-      margin-top: 10px;
-    }
-
     #affirmation {
       font-style: italic;
       font-weight: 500;
@@ -153,18 +148,6 @@
       <button onclick="saveReflection()">💾 Save Reflection</button>
       <p id="msg"></p>
       <div id="savedReflection"></div>
-    </section>
-
-    <!-- Ambient Sound -->
-    <section>
-      <h3>🎧 Choose Ambient Sound</h3>
-      <select id="soundSelect">
-        <option value="rain.mp3">🌧 Rain</option>
-        <option value="ocean.mp3">🌊 Ocean Waves</option>
-        <option value="forest.mp3">🌲 Forest Birds</option>
-      </select><br><br>
-      <audio id="player" controls></audio><br>
-      <button onclick="playSound()">Play Sound</button>
     </section>
   </main>
 
@@ -228,15 +211,6 @@
         saved.style.display = "block";
       }
     };
-
-    // 🎧 Sound Player (works reliably)
-    function playSound() {
-      const sound = document.getElementById("soundSelect").value;
-      const player = document.getElementById("player");
-      player.src = "./assets/" + sound; // make sure path matches your project
-      player.load();
-      player.play().catch(err => console.log("Autoplay blocked:", err));
-    }
   </script>
 </body>
 </html>
