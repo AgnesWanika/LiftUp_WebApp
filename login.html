@@ -4,198 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LiftUp – Login</title>
-    <link rel="stylesheet" href="style.css">
 
     <style>
         body {
             margin: 0;
-            height: 100vh;
+            background: #fafafa;
+            font-family: "Poppins", sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: "Poppins", sans-serif;
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            overflow: hidden;
+            height: 100vh;
         }
 
-        /* Floating background bubbles */
-        .bubble {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: floatUp 10s infinite ease-in-out;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-40px) scale(1.1); }
-            100% { transform: translateY(0) scale(1); }
-        }
-
-        /* Glass login box */
-        .glass-box {
-            width: 380px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.20);
-            border-radius: 20px;
-            backdrop-filter: blur(18px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        .login-container {
+            width: 360px;
+            background: #ffffff;
+            border: 1px solid #dbdbdb;
+            padding: 40px 35px;
             text-align: center;
-            animation: fadeIn 1s ease;
+            border-radius: 10px;
         }
 
-        h2 {
-            color: #003c3c;
-            margin-bottom: 12px;
+        h1 {
+            font-family: "Poppins";
+            font-weight: 700;
+            color: #008080;
             font-size: 28px;
+            margin-bottom: 30px;
         }
 
         input {
-            width: 85%;
+            width: 100%;
             padding: 12px;
-            margin: 8px 0;
-            border-radius: 12px;
-            border: none;
+            margin-bottom: 12px;
+            background: #fafafa;
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            font-size: 14px;
             outline: none;
-            background: rgba(255,255,255,0.5);
-            backdrop-filter: blur(10px);
         }
 
-        /* Ripple button */
+        input:focus {
+            border-color: #008080;
+        }
+
         button {
-            width: 85%;
+            width: 100%;
             padding: 12px;
-            margin-top: 10px;
-            border-radius: 12px;
+            background: #008080;
             border: none;
-            background: #00897b;
+            border-radius: 8px;
             color: white;
-            font-size: 17px;
+            font-size: 15px;
+            font-weight: 600;
             cursor: pointer;
-            overflow: hidden;
-            position: relative;
+            margin-top: 5px;
         }
 
         button:hover {
-            background: #00695c;
+            background: #006666;
         }
 
-        button:active::after {
-            content: "";
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: rgba(255,255,255,0.4);
-            border-radius: 50%;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            animation: ripple 0.5s linear;
-        }
-
-        @keyframes ripple {
-            100% {
-                transform: translate(-50%, -50%) scale(2);
-                opacity: 0;
-            }
-        }
-
-        /* Error shake */
-        .shake {
-            animation: shakeAnim 0.4s ease;
-        }
-
-        @keyframes shakeAnim {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-6px); }
-            50% { transform: translateX(6px); }
-            75% { transform: translateX(-6px); }
-        }
-
-        a {
-            font-weight: 600;
-            color: #004d40;
+        .forgot {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #003f3f;
             cursor: pointer;
         }
 
-        #errorMsg {
-            margin-top: 10px;
-            font-weight: bold;
-            color: #d50000;
+        .signup-text {
+            margin-top: 20px;
+            font-size: 14px;
         }
 
+        .signup-text a {
+            color: #008080;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        #error {
+            color: red;
+            margin-top: 10px;
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- Floating Bubbles -->
-    <div class="bubble" style="width:70px; height:70px; top:10%; left:15%; animation-duration:12s;"></div>
-    <div class="bubble" style="width:50px; height:50px; top:80%; left:70%; animation-duration:10s;"></div>
-    <div class="bubble" style="width:90px; height:90px; top:40%; left:80%; animation-duration:14s;"></div>
-    <div class="bubble" style="width:40px; height:40px; top:60%; left:20%; animation-duration:11s;"></div>
+    <div class="login-container">
+        <h1>LiftUp</h1>
 
-    <div class="glass-box" id="loginBox">
-        <h2>🔐 Welcome Back</h2>
+        <input type="email" id="email" placeholder="Email address">
+        <input type="password" id="password" placeholder="Password">
 
-        <input type="email" id="loginEmail" placeholder="Enter Email">
-        <input type="password" id="loginPassword" placeholder="Enter Password">
+        <button onclick="loginUser()">Log In</button>
 
-        <button onclick="loginUser()">Login</button>
+        <p id="error"></p>
 
-        <p id="errorMsg"></p>
+        <p class="forgot">Forgot password?</p>
 
-        <p style="margin-top: 12px;">New to LiftUp?
-            <a href="signup.html">Create account</a>
-        </p>
-
-        <p>
-            <a onclick="showForgotPopup()">Forgot Password?</a>
-        </p>
-    </div>
-
-    <!-- Forgot Password Box -->
-    <div id="forgotBox" style="
-        display:none; 
-        position:fixed; 
-        top:0; left:0; 
-        width:100%; height:100%; 
-        background:rgba(0,0,0,0.5); 
-        justify-content:center; 
-        align-items:center;
-    ">
-        <div style="
-            background:white; padding:25px; border-radius:15px; width:350px;
-            text-align:center;
-        ">
-            <h3>🔍 Reset Password</h3>
-
-            <input type="email" id="resetEmail" placeholder="Enter your email">
-
-            <button onclick="LiftUpAuth.verifySecurity()">Submit</button>
-            <button onclick="closeForgotPopup()" style="background:#999;">Cancel</button>
+        <div class="signup-text">
+            Don’t have an account? 
+            <a href="signup.html">Sign up</a>
         </div>
     </div>
 
-    <script src="auth.js"></script>
-
     <script>
         function loginUser() {
-            let success = LiftUpAuth.login();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
 
-            if (!success) {
-                let box = document.getElementById("loginBox");
-                box.classList.add("shake");
-                setTimeout(() => box.classList.remove("shake"), 500);
+            // Temporary logic (we will connect backend later)
+            if (email === "user@gmail.com" && password === "1234") {
+                window.location.href = "index.html"; // redirect to dashboard
+            } else {
+                document.getElementById("error").innerText = "Incorrect email or password!";
             }
-        }
-
-        function showForgotPopup() {
-            document.getElementById("forgotBox").style.display = "flex";
-        }
-
-        function closeForgotPopup() {
-            document.getElementById("forgotBox").style.display = "none";
         }
     </script>
 
