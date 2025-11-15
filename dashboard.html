@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiftUp Community Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background: #eefafa;
+            font-family: 'Poppins', sans-serif;
+        }
+        header {
+            background: linear-gradient(to right, #4db6ac, #2980b9);
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 15px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .card {
+            background: white;
+            width: 260px;
+            padding: 20px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .card h3 {
+            margin-bottom: 10px;
+        }
+        .btn {
+            padding: 10px 15px;
+            background-color: #2980b9;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #1f6a92;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌿 LiftUp Community</h1>
+    <nav>
+        <a href="health.html">Health</a>
+        <a href="education.html">Education</a>
+        <a href="reflect.html">Reflect</a>
+        <a href="donate.html">Donate</a>
+    </nav>
+</header>
+
+<section style="text-align:center; padding:30px;">
+    <h2>Welcome to LiftUp! ✨</h2>
+    <p>Connecting people through Health, Education, Reflect & Kindness.</p>
+</section>
+
+<div class="container">
+    <div class="card">
+        <h3>Health</h3>
+        <p>Access health tips & resources.</p>
+        <button class="btn" onclick="location.href='health.html'">Explore</button>
+    </div>
+
+    <div class="card">
+        <h3>Education</h3>
+        <p>Learn and grow with free resources.</p>
+        <button class="btn" onclick="location.href='education.html'">Explore</button>
+    </div>
+
+    <div class="card">
+        <h3>Reflect</h3>
+        <p>Share your thoughts & reflections.</p>
+        <button class="btn" onclick="location.href='reflect.html'">Explore</button>
+    </div>
+
+    <div class="card">
+        <h3>Donate</h3>
+        <p>Support community initiatives.</p>
+        <button class="btn" onclick="location.href='donate.html'">Contribute</button>
+    </div>
+</div>
+
+<footer style="text-align:center; margin-top:50px; padding:10px;">
+    © 2025 LiftUp | Built with ❤️ for the community
+</footer>
+
+</body>
+</html>
